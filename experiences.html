@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiences - Rafael Colombo</title>
+    <style>
+        body {
+            font-family:Inter, Source Sans Pro, Helvetica Neue, Arial, sans-serif;;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #527186;
+            color:  #f4f4f4 ;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 100px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .experiences-content {
+            background:#f4f4f4 ;
+            padding: 20px;
+         
+        }
+
+        .experiences-content p {
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: bolder;
+            color: #527186;
+            text-decoration: none;
+            border: 1px solid #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .back-link:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            .experiences-content {
+                padding: 15px;
+            }
+
+            .back-link {
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2em;
+            }
+
+            .experiences-content {
+                padding: 10px;
+            }
+
+            .back-link {
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- <h1>Experiences</h1> -->
+        <h1 class="ml3">Experiences.</h1>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    </header>
+    <main class="container">
+        <div class="experiences-content">
+            <p>Olá! Meu nome é Rafael Colombo e esta é a página das minhas experiências. Aqui você pode encontrar
+                informações sobre minha trajetória profissional e acadêmica.</p>
+            <p>Estou estagiando na Plastic Omnium, focado na área de melhoria contínua de processos e na supervisão do
+                cumprimento de procedimentos.</p>
+            <p>Fiz parte do Centro Acadêmico de Engenharia Química - CAEQ-EEL/USP, onde ocupei o cargo de Assessor de
+                Marketing e Comunicação. Após um ano, alcancei o cargo de Diretor de Marketing e Comunicação. E após
+                elaborar minhas propostas e por meio de votação, fui eleito diretor da área.</p>
+            <p>Realizei um estágio estudantil em uma empresa alemã, a Hengst Filtration. Atuei na área de desenho de
+                peças mecânicas, onde pude aprender um pouco sobre o AutoCad.</p>
+
+            <a class="back-link" href="index.html">HOME</a>
+        </div>
+    </main>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const backLink = document.querySelector('.back-link');
+            backLink.addEventListener('click', function (event) {
+                event.preventDefault();
+                window.location.href = this.getAttribute('href');
+            });
+        });
+
+        var textWrapper = document.querySelector('.ml3');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+        anime.timeline({ loop: true })
+            .add({
+                targets: '.ml3 .letter',
+                opacity: [0, 1],
+                easing: "easeInOutQuad",
+                duration: 2250,
+                delay: (el, i) => 150 * (i + 1)
+            }).add({
+                targets: '.ml3',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
+            });
+    </script>
+</body>
+
+</html>

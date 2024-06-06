@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael Colombo</title>
+    <style>
+        :root {
+            --color-white: #fff;
+            --color-dark1: #574B33;
+            --color-dark2: #fdf0ec;
+            --color-dark3: #527186;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--color-dark2);
+            color: black;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .logo-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .img_logorafa {
+            width: 90px;
+        }
+
+        .menu-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .header,
+        .menu {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 3em;
+            z-index: 2;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            transition: 1s;
+        }
+
+        .menu a:hover {
+            color: var(--color-dark1);
+            font-weight: bold;
+
+        }
+
+        .section-nome {
+            height: 80%;
+            position: relative;
+            margin: 10px;
+            padding: 20px;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-content: flex-start;
+            justify-content: space-evenly;
+        }
+
+        .nome-tab {
+            position: relative;
+            width: 88%;
+            margin: 0 auto;
+            padding-right: 8.7vw;
+            box-sizing: border-box;
+            top: -30px;
+        }
+
+        .nome-completo {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+            font-weight: 800;
+            font-size: calc(20px + 3.7vw);
+            z-index: 1;
+            transition: 1s;
+            padding: auto;
+        }
+
+        .rafael {
+            text-align: left;
+            position: relative;
+            left: 2.99em;
+            overflow: visible;
+            height: 1.2em;
+            border: 2px solid transparent;
+        }
+
+        .nome-rafael-inner {
+            display: inline-block;
+            line-height: 1em;
+            transform: translateY(1.2em);
+        }
+
+        .colombo {
+            overflow: visible;
+            height: 1.2em;
+            border: 2px solid transparent;
+            text-align: center;
+            right: -4em;
+            position: relative;
+        }
+
+        .nome-rafael-inner {
+            display: inline-block;
+            line-height: 1em;
+        }
+
+        .btn-icon-header {
+            display: none;
+            background: transparent;
+            border: none;
+            color: black;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-container {
+                flex: 1;
+                display: flex;
+                justify-content: flex-end;
+                height: 100%;
+                position: absolute;
+                background-color: var(--color-dark2);
+                top: 0;
+                left: 0;
+                width: 70vw;
+                max-width: 250px;
+                z-index: 3;
+                overflow: visible;
+                margin-left: -100vw;
+            }
+
+            .menu {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 60px;
+                /* Ajuste para posicionar abaixo do cabeçalho */
+                gap: 1em;
+                padding: 1em;
+                width: 100%;
+            }
+
+            .btn-icon-header {
+                display: block;
+            }
+        }
+
+        @keyframes showSidebar {
+            from {
+                margin-left: -100vw;
+            }
+
+            to {
+                margin-left: 0;
+            }
+        }
+
+        .about {
+            width: 1600px;
+            max-width: 100%;
+            box-sizing: border-box;
+            padding: 40px;
+            position: relative;
+            bottom: -450px;
+            left: -0.5em;
+            top: -50px;
+        }
+
+        .about-text {
+            font-family: Inter, Source Sans Pro, Helvetica Neue, Arial, sans-serif;
+            font-size: 135px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: left;
+            left: 0.5em;
+            z-index: 10;
+            position: relative;
+            line-height: 0.6em;
+            pointer-events: none;
+            flex: 1 100%;
+        }
+
+        .blue-back {
+            background-color: var(--color-dark3);
+            width: 1185px;
+            height: 360px;
+            padding: 20px;
+            position: relative;
+            left: 1.5em;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+
+        .texto-background {
+            word-break: normal;
+            color: var(--color-white);
+            font-size: 18px;
+            line-height: 1.8;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            bottom: -0.96em;
+            position: relative;
+        }
+
+        .about-picture {
+            height: 100%;
+            width: 20%;
+            object-fit: cover;
+            position: absolute;
+            top: 50%;
+            left: 88%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        @media screen and (max-width: 1200px) {
+            .about-picture {
+                width: 30%;
+                left: 80%;
+            }
+
+            .about-foto {
+                height: 300px;
+            }
+
+            .about-text {
+                font-size: 100px;
+            }
+
+            .blue-back {
+                width: 100%;
+                padding: 20px;
+                height: 300px;
+            }
+
+            .texto-background {
+                font-size: 16px;
+                text-indent: 1.5em;
+            }
+
+            .experiences-container {
+                padding: 30px;
+                bottom: -350px;
+            }
+
+            .experience-text {
+                font-size: 100px;
+            }
+
+            .experience-texto {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .about-picture {
+                width: 40%;
+                left: 70%;
+            }
+
+            .about-foto {
+                height: 250px;
+                left: 30px;
+            }
+
+
+            .about-text {
+                font-size: 80px;
+            }
+
+            .blue-back {
+                padding: 15px;
+                height: 300px;
+            }
+
+            .texto-background {
+                font-size: 14px;
+                text-indent: 1em;
+            }
+
+            .experiences-container {
+                padding: 20px;
+                bottom: -250px;
+            }
+
+            .experience-text {
+                font-size: 80px;
+            }
+
+            .experience-texto {
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+
+            .about-picture {
+                width: 50%;
+                left: 60%;
+            }
+
+            .about-foto {
+                height: 200px;
+                left: 20px;
+            }
+
+            .about-text {
+                font-size: 60px;
+            }
+
+            .blue-back {
+                padding: 10px;
+                height: 300px;
+            }
+
+            .texto-background {
+                font-size: 12px;
+                text-indent: 0.5em;
+            }
+
+            .experiences-container {
+                padding: 10px;
+                bottom: -150px;
+            }
+
+            .experience-text {
+                font-size: 60px;
+            }
+
+            .experience-texto {
+                font-size: 12px;
+            }
+        }
+
+        .about-foto {
+            border-radius: 20px;
+            position: relative;
+            top: 4px;
+            left: 60px;
+            height: 350px;
+
+
+        }
+
+        .links-contato {
+            height: auto;
+            width: 70%;
+            position: relative;
+            bottom: -1cm;
+        }
+
+        .contato-link1 {
+            color: inherit;
+            padding: 4px;
+            margin: 5px;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            bottom: 0.5cm;
+        }
+
+        .icone-contato1 {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .bi {
+            position: relative;
+            left: 0px;
+            bottom: -10px;
+        }
+
+        .contato-link2 {
+            color: inherit;
+            padding: 4px;
+            margin: 5px;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            bottom: 0.1cm;
+        }
+
+        .icone-contato2 {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .experiences-container {
+            width: 1600px;
+            max-width: 100%;
+            box-sizing: border-box;
+            padding: 40px;
+            position: relative;
+            bottom: -450px;
+            left: -0.5em;
+            top: -50px;
+            margin-block: 150px;
+        }
+
+        .experience-text {
+            font-family: Inter, Source Sans Pro, Helvetica Neue, Arial, sans-serif;
+            font-size: 135px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: left;
+            left: 0.5em;
+            z-index: 10;
+            position: relative;
+            line-height: 0.6em;
+            pointer-events: none;
+            flex: 1 100%;
+        }
+
+        .experience-texto {
+            word-break: normal;
+            color: var(--color-white);
+            font-size: 18px;
+            line-height: 1.8;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            position: inherit;
+            max-width: 1145px;
+            bottom: -0.96em;
+
+        }
+
+        .bi2 {
+            position: relative;
+            left: 0px;
+            bottom: 7px;
+            color: black;
+            width: 38px;
+            height: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header" id="header">
+        <button class="btn-icon-header" onclick="toggleSidebar()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+            </svg>
+        </button>
+
+        <div class="logo-header">
+            <img src="logo-rafano.png" alt="Logo" class="img_logorafa">
+        </div>
+
+        <div class="menu-container" id="menu-container">
+            <div class="menu" id="menu">
+                <button class="btn-icon-header" onclick="toggleSidebar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path
+                            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                    </svg>
+                </button>
+                <a href="index.html">HOME</a>
+                <a href="about.html">ABOUT</a>
+                <a href="experiences.html">EXPERIENCES</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-nome">
+        <div tabindex="0" class="nome-tab" onfocus="closeSidebar()" id="nome-tab">
+            <h1 class="nome-completo">
+                <span class="rafael">
+                    <span class="nome-rafael-inner" style="transform: translateY(0px);">Rafael</span>
+                </span>
+                <span class="colombo">
+                    <span class="nome-rafael-inner" style="transform: translateY(0px);">Colombo</span>
+                </span>
+            </h1>
+        </div>
+    </div>
+   
+
+    <div class="about" id="about">
+        <h2 class="about-text">About.</h2>
+        <div class="blue-back">
+            <h2 class="texto-background">
+                <p>Sou graduando em Engenharia Química na Universidade de São Paulo (USP).</p>
+                <p>Fui embaixador Brasileiro na Alemanha pelo programa Rotary Youth Exchange no ano 2018-2019.</p>
+                <p>Foi essa experiência que mudou completamente minha visão sobre o mundo e pude conhecer
+                </p>
+                <p>novas culturas, pessoas e me fizeram amadurecer muito, principalmente por passar 1 ano longe </p>
+                <p>dos meus pais sendo tão jovem (16 anos).</p>
+                <p> Ademais, foi essa experiência fora do Brasil que me permitiu a fluência em 2 idiomas, alemão e </p>
+                <p>espanhol.</p>
+
+
+            </h2>
+            <div class="about-picture">
+                <img src="IMG-20240319-WA0014.jpg" class="about-foto" height="370px">
+            </div>
+            <div class="links-contato">
+                <a class="contato-link1" href="https://www.linkedin.com/in/rafael-colombo-782670255/">
+                    <span class="icone-contato1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                        </svg>
+                    </span>
+                </a>
+                <a class="contato-link2" href="mailto:rflcolombo@gmail.com">
+                    <span class="icone-contato2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="42" fill="currentColor" class="bi2"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
+                            <path
+                                d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791" />
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="experiences-container" id="experiences-container">
+        <h1 class="experience-text">Experiences.</h1>
+        <div class="blue-back">
+            <h2 class="experience-texto">
+                <p> Estou estagiando na Plastic Omnium. Focado na área de melhoria contínua de processos e na supervisão
+                    do cumprimento de procedimentos. </p>
+                <p> Fiz parte do Centro Acadêmico de Engenharia Quiímica - CAEQ-EEL/USP. Nela ocupei o cargo de Acessor
+                    de Marketing e Comunicação. Após 1 ano, alcancei o cargo de Dirtor de Marketing e Comunicação. E
+                    após elaborar minhas propostas e por meio de votação, fui eleito diretor da área.</p>
+                <p> Realizei um estágio estudantil em uma empresa alemã, a Hengst Filtration. Atuei na área de desenho
+                    de peças mecânicas, onde pude aprender um pouco sobre o AutoCad.</p>
+            </h2>
+
+
+
+        </div>
+
+
+    </div>
+
+</body>
+<script>
+    var menuContainer = document.getElementById('menu-container');
+    var menu = document.getElementById('menu');
+    var nomeTab = document.getElementById('nome-tab');
+    var showSidebar = false;
+
+    function toggleSidebar() {
+        showSidebar = !showSidebar;
+        if (showSidebar) {
+            menuContainer.style.marginLeft = '0';
+            menuContainer.style.animationName = 'showSidebar';
+            nomeTab.style.filter = 'blur(2px)';
+        } else {
+            menuContainer.style.marginLeft = '-100vw';
+            menuContainer.style.animationName = '';
+            nomeTab.style.filter = '';
+        }
+    }
+
+    function closeSidebar() {
+        if (showSidebar) {
+            showSidebar = false;
+            toggleSidebar();
+        }
+    }
+
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 768 && showSidebar) {
+            showSidebar = false;
+            toggleSidebar();
+        }
+    });
+</script>
+
+</html>
+
+<!-- falta estilizar as outras páginas,
